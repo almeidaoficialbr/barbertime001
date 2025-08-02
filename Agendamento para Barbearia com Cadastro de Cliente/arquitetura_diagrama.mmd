@@ -1,0 +1,92 @@
+graph TB
+    subgraph "Cliente Final"
+        C[Cliente Mobile/Web]
+    end
+    
+    subgraph "Load Balancer"
+        LB[Nginx Load Balancer]
+    end
+    
+    subgraph "Frontend Layer"
+        FE1[React App - Tenant 1]
+        FE2[React App - Tenant 2]
+        FE3[React App - Tenant N]
+        ADMIN[Admin Dashboard]
+    end
+    
+    subgraph "API Gateway"
+        API[Flask API Gateway]
+        AUTH[Authentication Service]
+        TENANT[Tenant Resolution]
+    end
+    
+    subgraph "Application Layer"
+        APP1[Barbearia App 1]
+        APP2[Barbearia App 2]
+        APP3[Barbearia App N]
+        PLATFORM[Platform Management]
+    end
+    
+    subgraph "Database Layer"
+        MAIN[(Main Database)]
+        TENANT1[(Tenant 1 Schema)]
+        TENANT2[(Tenant 2 Schema)]
+        TENANT3[(Tenant N Schema)]
+    end
+    
+    subgraph "Cache & Queue"
+        REDIS[(Redis Cache)]
+        CELERY[Celery Workers]
+    end
+    
+    subgraph "External Services"
+        EMAIL[Email Service]
+        SMS[SMS Service]
+        PAYMENT[Payment Gateway]
+        MAPS[Maps API]
+    end
+    
+    C --> LB
+    LB --> FE1
+    LB --> FE2
+    LB --> FE3
+    LB --> ADMIN
+    
+    FE1 --> API
+    FE2 --> API
+    FE3 --> API
+    ADMIN --> API
+    
+    API --> AUTH
+    API --> TENANT
+    
+    AUTH --> MAIN
+    TENANT --> MAIN
+    
+    API --> APP1
+    API --> APP2
+    API --> APP3
+    API --> PLATFORM
+    
+    APP1 --> TENANT1
+    APP2 --> TENANT2
+    APP3 --> TENANT3
+    PLATFORM --> MAIN
+    
+    API --> REDIS
+    API --> CELERY
+    
+    CELERY --> EMAIL
+    CELERY --> SMS
+    API --> PAYMENT
+    API --> MAPS
+    
+    style C fill:#e1f5fe
+    style MAIN fill:#fff3e0
+    style TENANT1 fill:#f3e5f5
+    style TENANT2 fill:#f3e5f5
+    style TENANT3 fill:#f3e5f5
+    style API fill:#e8f5e8
+    style AUTH fill:#ffebee
+    style TENANT fill:#ffebee
+

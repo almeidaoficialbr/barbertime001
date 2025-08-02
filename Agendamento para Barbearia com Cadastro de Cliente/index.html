@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}Barbearia Clássica - Tradição e Modernidade{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Barbearia Clássica</h1>
+        <p class="hero-subtitle">Tradição e modernidade em cada corte</p>
+        <a href="{{ url_for('agendamento') }}" class="btn btn-primary">Agendar Horário</a>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services">
+    <div class="container">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <h3>Corte Tradicional</h3>
+                <p>Cortes clássicos com técnicas tradicionais e modernas.</p>
+                <span class="price">R$ 35,00</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Barba & Bigode</h3>
+                <p>Aparar e modelar barba e bigode com precisão.</p>
+                <span class="price">R$ 25,00</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <h3>Tratamento Capilar</h3>
+                <p>Hidratação e cuidados especiais para seus cabelos.</p>
+                <span class="price">R$ 45,00</span>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-scissors"></i>
+                </div>
+                <h3>Pacote Completo</h3>
+                <p>Corte + Barba + Tratamento em um só serviço.</p>
+                <span class="price">R$ 85,00</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Sobre Nós</h2>
+                <p>Com mais de 10 anos de experiência, a Barbearia Clássica combina tradição e modernidade para oferecer o melhor serviço de barbearia da região.</p>
+                <p>Nossa equipe de profissionais qualificados está sempre pronta para atender você com excelência e dedicação.</p>
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fas fa-award"></i>
+                        <span>Profissionais Qualificados</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-clock"></i>
+                        <span>Horários Flexíveis</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-star"></i>
+                        <span>Atendimento Premium</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/hero-bg.jpg') }}" alt="Interior da Barbearia">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"Excelente atendimento e corte perfeito. Sempre saio satisfeito!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <strong>João Silva</strong>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"Ambiente aconchegante e profissionais muito competentes."</p>
+                </div>
+                <div class="testimonial-author">
+                    <strong>Carlos Santos</strong>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"Melhor barbearia da região! Recomendo a todos."</p>
+                </div>
+                <div class="testimonial-author">
+                    <strong>Pedro Oliveira</strong>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Pronto para um Novo Visual?</h2>
+            <p>Agende seu horário agora e experimente o melhor da barbearia tradicional.</p>
+            <a href="{{ url_for('agendamento') }}" class="btn btn-secondary">Agendar Agora</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

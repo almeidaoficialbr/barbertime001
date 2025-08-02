@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Agendamento - Barbearia Clássica{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/calendar.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Agendamento Header -->
+<section class="agendamento-header">
+    <div class="container">
+        <h1>Agendar Horário</h1>
+        <p>Preencha seus dados e escolha o melhor horário para você</p>
+    </div>
+</section>
+
+<!-- Agendamento Form -->
+<section class="agendamento-form">
+    <div class="container">
+        <div class="form-container">
+            <div class="form-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-title">Dados Pessoais</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-title">Escolher Data</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-title">Confirmar</span>
+                </div>
+            </div>
+
+            <form id="agendamentoForm" class="agendamento-form-content">
+                <!-- Step 1: Dados Pessoais -->
+                <div class="form-step active" id="step1">
+                    <h2>Seus Dados</h2>
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required>
+                        <span class="error-message" id="nome-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone *</label>
+                        <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
+                        <span class="error-message" id="telefone-error"></span>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-primary" onclick="nextStep(2)">Próximo</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Escolher Data e Horário -->
+                <div class="form-step" id="step2">
+                    <h2>Escolha a Data e Horário</h2>
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button type="button" id="prevMonth" class="calendar-nav">&lt;</button>
+                            <h3 id="currentMonth"></h3>
+                            <button type="button" id="nextMonth" class="calendar-nav">&gt;</button>
+                        </div>
+                        <div class="calendar" id="calendar"></div>
+                    </div>
+                    
+                    <div class="horarios-container" id="horariosContainer" style="display: none;">
+                        <h3>Horários Disponíveis</h3>
+                        <div class="horarios-grid" id="horariosGrid"></div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Voltar</button>
+                        <button type="button" class="btn btn-primary" id="btnConfirmar" onclick="nextStep(3)" disabled>Confirmar</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Confirmação -->
+                <div class="form-step" id="step3">
+                    <h2>Confirmar Agendamento</h2>
+                    <div class="confirmacao-dados">
+                        <div class="dados-cliente">
+                            <h3>Seus Dados</h3>
+                            <p><strong>Nome:</strong> <span id="confirm-nome"></span></p>
+                            <p><strong>E-mail:</strong> <span id="confirm-email"></span></p>
+                            <p><strong>Telefone:</strong> <span id="confirm-telefone"></span></p>
+                        </div>
+                        <div class="dados-agendamento">
+                            <h3>Agendamento</h3>
+                            <p><strong>Data:</strong> <span id="confirm-data"></span></p>
+                            <p><strong>Horário:</strong> <span id="confirm-horario"></span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Voltar</button>
+                        <button type="submit" class="btn btn-primary">Finalizar Agendamento</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Loading Modal -->
+<div class="modal" id="loadingModal">
+    <div class="modal-content">
+        <div class="loading-spinner"></div>
+        <p>Processando seu agendamento...</p>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal" id="successModal">
+    <div class="modal-content">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Agendamento Confirmado!</h3>
+        <p>Seu agendamento foi realizado com sucesso. Você receberá uma confirmação por e-mail.</p>
+        <button class="btn btn-primary" onclick="closeModal('successModal')">OK</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/agendamento.js') }}"></script>
+{% endblock %}
+

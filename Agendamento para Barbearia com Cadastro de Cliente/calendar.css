@@ -1,0 +1,233 @@
+/* Calendar Styles */
+.calendar-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.calendar-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-header h3 {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.calendar-nav {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-nav:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: var(--light-gray);
+}
+
+.calendar-day-header {
+    background: var(--off-white);
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+}
+
+.calendar-day {
+    background: white;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.calendar-day:hover {
+    background-color: var(--off-white);
+}
+
+.calendar-day.other-month {
+    color: var(--light-gray);
+    background-color: #fafafa;
+}
+
+.calendar-day.today {
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.available {
+    background-color: #e8f5e8;
+    color: #2d5a2d;
+}
+
+.calendar-day.available:hover {
+    background-color: #d4edda;
+}
+
+.calendar-day.selected {
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.calendar-day.disabled {
+    background-color: #f8f9fa;
+    color: var(--light-gray);
+    cursor: not-allowed;
+}
+
+.calendar-day.disabled:hover {
+    background-color: #f8f9fa;
+}
+
+/* Horários Grid */
+.horarios-container {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--off-white);
+    border-radius: 10px;
+}
+
+.horarios-container h3 {
+    font-family: var(--font-primary);
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.horarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.horario-slot {
+    background: white;
+    border: 2px solid var(--light-gray);
+    padding: 1rem;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.horario-slot:hover {
+    border-color: var(--secondary-color);
+    background-color: rgba(184, 134, 11, 0.1);
+}
+
+.horario-slot.selected {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+.horario-slot.disabled {
+    background-color: #f8f9fa;
+    color: var(--light-gray);
+    border-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+.horario-slot.disabled:hover {
+    background-color: #f8f9fa;
+    border-color: #e9ecef;
+}
+
+/* Calendar Legend */
+.calendar-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--off-white);
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.legend-available {
+    background-color: #e8f5e8;
+}
+
+.legend-selected {
+    background-color: var(--secondary-color);
+}
+
+.legend-today {
+    background-color: var(--secondary-color);
+}
+
+.legend-disabled {
+    background-color: #f8f9fa;
+}
+
+/* Responsive Calendar */
+@media (max-width: 768px) {
+    .calendar-day {
+        min-height: 50px;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .calendar-day-header {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .horarios-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.5rem;
+    }
+    
+    .horario-slot {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .calendar-legend {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+
